@@ -1,0 +1,144 @@
+﻿<UserControl x:Class="QuanLiCoffeeShop.View.Admin.Table.Table_card.card_table"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:QuanLiCoffeeShop.View.Admin.Table.Table_card"
+             mc:Ignorable="d"
+             Background="White">
+    <Grid>
+
+        <Border Height="216"
+                Width="164"
+                BorderThickness="1"
+                CornerRadius="15">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Status}"
+                                     Value="Còn trống">
+                            <Setter Property="BorderBrush"
+                                    Value="#8AE08E" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status}"
+                                     Value="Đã đặt">
+                            <Setter Property="BorderBrush"
+                                    Value="#E0AE8A" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status}"
+                                     Value="Đang sửa chữa">
+                            <Setter Property="BorderBrush"
+                                    Value="#FF6871" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <StackPanel>
+                <Button Width="100"
+                        Height="100"
+                        Margin="0,13,0,0"
+                        Command="{Binding DataContext.OpenInfo, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                        CommandParameter="{Binding}">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Width="90.4"
+                                   Height="92"
+                                   Source="/QuanLiCoffeeShop;component/Resources/Image/table.png"></Image>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <TextBlock Text="3"
+                           Foreground="#FF6C01"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"
+                     
+                           FontSize="16"
+                           Height="19" />
+
+                <TextBlock Text="Bàn 4"
+                           HorizontalAlignment="Center"
+                           FontSize="16"
+                           Height="19"
+                           VerticalAlignment="Center"></TextBlock>
+                <TextBlock HorizontalAlignment="Center"
+                           FontSize="9.5"
+                           Text="Còn trống"
+                           Margin="0,3,0,0"
+                           Foreground="#FF3DFF3D">
+
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Status}"
+                                             Value="Còn trống">
+                                    <Setter Property="Foreground"
+                                            Value="#FF3DFF3D" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}"
+                                             Value="Đã đặt">
+                                    <Setter Property="Foreground"
+                                            Value="#B57241" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Status}"
+                                             Value="Đang sửa chữa">
+                                    <Setter Property="Foreground"
+                                            Value="#F72B37" />
+                                </DataTrigger>
+
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+                <Grid Margin="0,7,0,0">
+                    <!--button_repair_table-->
+                    <Button Margin="55,0,83,0"
+                            Height="23"
+                            Width="23"
+                            Background="White"
+                            Command="{Binding DataContext.OpenEdit, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                            CommandParameter="{Binding}">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Border CornerRadius="100"
+                                        Background="White"
+                                        Height="23"
+                                        Width="23">
+                                    <Image Source="/QuanLiCoffeeShop;component/Resources/Icon/ChangeBrown_Icon.png"></Image>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <!--button_deltete-->
+
+                    <Button Height="23"
+                            Width="23"
+                            Background="White"
+                            Margin="83,0,55,0"
+                            VerticalAlignment="Center"
+                            Command="{Binding DataContext.OpenDelete, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                            CommandParameter="{Binding}">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Border CornerRadius="100"
+                                        Background="White"
+                                        Height="23"
+                                        Width="23">
+                                    <Image Source="/QuanLiCoffeeShop;component/Resources/Icon/DeleteBlue_Icon.png"></Image>
+                                </Border>
+
+                            </ControlTemplate>
+                        </Button.Template>
+
+                    </Button>
+
+                </Grid>
+
+            </StackPanel>
+        </Border>
+
+
+    </Grid>
+
+
+</UserControl>

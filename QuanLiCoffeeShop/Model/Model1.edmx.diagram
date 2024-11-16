@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+
+
+      <Diagram DiagramId="19200426042f4538a3fc03a869f1fd58" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="QuanLiCoffeShopModel.Bill" Width="1.5" PointX="7.5" PointY="5.125" />
+        <EntityTypeShape EntityType="QuanLiCoffeShopModel.BillInfo" Width="1.5" PointX="9.75" PointY="5.375" />
+        <EntityTypeShape EntityType="QuanLiCoffeShopModel.Customer" Width="1.5" PointX="5.25" PointY="7" />
+        <EntityTypeShape EntityType="QuanLiCoffeShopModel.Error" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="QuanLiCoffeShopModel.GenreProduct" Width="1.5" PointX="5.25" PointY="11.875" />
+        <EntityTypeShape EntityType="QuanLiCoffeShopModel.GenreSeat" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="QuanLiCoffeShopModel.Product" Width="1.5" PointX="7.5" PointY="11.25" />
+        <EntityTypeShape EntityType="QuanLiCoffeShopModel.Seat" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="QuanLiCoffeShopModel.Staff" Width="1.5" PointX="5.25" PointY="1.75" />
+        <EntityTypeShape EntityType="QuanLiCoffeShopModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" />
+        <AssociationConnector Association="QuanLiCoffeShopModel.FK_Bill_Cus" />
+        <AssociationConnector Association="QuanLiCoffeShopModel.FK_Bill_Seat" />
+        <AssociationConnector Association="QuanLiCoffeShopModel.FK_Bill_Staff" />
+        <AssociationConnector Association="QuanLiCoffeShopModel.FK_BillInfo_Bill" />
+        <AssociationConnector Association="QuanLiCoffeShopModel.FK_BillInfo_PrD" />
+        <AssociationConnector Association="QuanLiCoffeShopModel.FK_Cus_Seat" />
+        <AssociationConnector Association="QuanLiCoffeShopModel.FK_PrD_Genre" />
+        <AssociationConnector Association="QuanLiCoffeShopModel.FK_SEAT_GENRESEAT" />
+      </Diagram>
+
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

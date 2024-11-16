@@ -1,0 +1,156 @@
+﻿<Window x:Class="QuanLiCoffeeShop.View.LoginWindow.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLiCoffeeShop.View.LoginWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        Height="493.6"
+        Width="845.6"
+        Name="loginWindow"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="White"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Resources/Icon/AppIcon.ico"
+        DataContext="{StaticResource LoginVM}">
+   
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="345.08" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Rectangle>
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/QuanLiCoffeeShop;component/Resources/Image/Coffee Shop 1.png" />
+            </Rectangle.Fill>
+        </Rectangle>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="88.352" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle Margin="418.744,15.376,24.36,15.376">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/QuanLiCoffeeShop;component/Resources/Icon/LogoApp.png" />
+                </Rectangle.Fill>
+            </Rectangle>
+            <StackPanel Grid.Row="1"
+                        Margin="83.2,32,83.2,96.8">
+                <TextBlock Text="Đăng Nhập"
+                           FontSize="28.8"
+                           FontFamily="Inter"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center" />
+                <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                     UniformCornerRadius="30"
+                                     Width="332"
+                                     Height="220"
+                                     Margin="0,11.768">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="165" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <StackPanel>
+
+                            <TextBlock Text="Tài khoản"
+                                       FontFamily="Inter"
+                                       FontSize="11.2"
+                                       FontWeight="Medium"
+                                       Margin="52.856,25.976,0,3.2" />
+                            <TextBox Width="224"
+                                     Height="32.072"
+                                     BorderThickness="0.5"
+                                     materialDesign:TextFieldAssist.TextFieldCornerRadius="15"
+                                     VerticalContentAlignment="Center"
+                                     Padding="12,2.4"
+                                     Background="#F0F0F0"
+                                     FontFamily="Inter"
+                                     FontSize="12"
+                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                     Text="{Binding Username}" />
+                            <TextBlock Text="Mật khẩu"
+                                       FontFamily="Inter"
+                                       FontSize="11.2"
+                                       FontWeight="Medium"
+                                       Margin="52.856,7.416,0,4.944" />
+                            <PasswordBox x:Name="passwordBox"
+                                         Width="224"
+                                         Height="32.072"
+                                         BorderThickness="0.5"
+                                         materialDesign:TextFieldAssist.TextFieldCornerRadius="15"
+                                         VerticalContentAlignment="Center"
+                                         Padding="12,2.4"
+                                         Background="#F0F0F0"
+                                         FontFamily="Inter"
+                                         FontSize="12"
+                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PasswordChanged">
+                                        <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                                               CommandParameter="{Binding ElementName=passwordBox}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </PasswordBox>
+                            <TextBlock x:Name="forgotPass"
+                                       Text="Quên mật khẩu?"
+                                       FontFamily="Inter"
+                                       FontSize="11"
+                                       FontWeight="Medium"
+                                       Margin="150,6.4,0,6.04"
+                                       Width="87"
+                                       Cursor="Hand">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown">
+                                        <i:InvokeCommandAction Command="{Binding ForgotPasswordCM}"
+                                                               CommandParameter="{Binding ElementName=forgotPass}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBlock>
+                            <Separator Width="189.648"
+                                       Background="Black"></Separator>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1"
+                                    Orientation="Horizontal">
+
+                            <Button materialDesign:ButtonAssist.CornerRadius="15"
+                                    Command="{Binding LoginCommand}"
+                                    CommandParameter="{Binding ElementName=loginWindow}"
+                                    Width="98.592"
+                                    Height="27.16"
+                                    Background="#E0AE8A"
+                                    Content="Đăng nhập"
+                                    Foreground="Black"
+                                    FontSize="10.4"
+                                    FontWeight="SemiBold"
+                                    BorderThickness="0"
+                                    Margin="60,0,18.208,0" />
+                            <Button materialDesign:ButtonAssist.CornerRadius="15"
+                                    Width="98.592"
+                                    Height="27.16"
+                                    Background="#D0CCC8"
+                                    Content="Thoát"
+                                    Foreground="Black"
+                                    FontSize="10.4"
+                                    FontWeight="SemiBold"
+                                    BorderThickness="0"
+                                    Click="Button_Click" />
+                        </StackPanel>
+                    </Grid>
+
+                </materialDesign:Card>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

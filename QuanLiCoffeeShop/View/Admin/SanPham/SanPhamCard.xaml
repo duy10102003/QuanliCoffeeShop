@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="QuanLiCoffeeShop.View.Admin.SanPham.SanPhamCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLiCoffeeShop.View.Admin.SanPham"
+             mc:Ignorable="d" 
+             Width="164" Height="216"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontFamily="Popins"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="White"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             >
+    <Grid>
+        <Border
+            Background="White"
+            CornerRadius="15" 
+            BorderBrush="#E0AE8A" 
+            BorderThickness="2,2,2,2"          
+            Height="216"
+            Width="164"
+            >
+            <Grid 
+            Height="216"
+            Width="164">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="146"></RowDefinition>
+                    <RowDefinition Height="35"></RowDefinition>
+                    <RowDefinition Height="35"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Image 
+                        Grid.Row="0"
+                        Source="/QuanLiCoffeeShop;component/Resources/Image/None_Img.png"
+                        Height="126"
+                        Margin="-4,10,0,10"
+                        />
+                <TextBlock
+                FontFamily="Poppins"
+                FontWeight="Bold"
+                Grid.Row="1"              
+                Margin="10 0 0 0"
+                FontSize="16"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                >
+                Trà đào cam sả
+                </TextBlock>
+                <DockPanel                
+                Margin="10 0 10 5"
+                Grid.Row="2"
+                LastChildFill="False"
+                >
+                    <TextBlock
+                    x:Name="PriceSP"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    FontFamily="Poppins"
+                    FontWeight="Bold"
+                    FontSize="13"
+                    Foreground="#EA6A12"
+                    >25.000</TextBlock>
+                    <TextBlock
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    FontFamily="Poppins"
+                    FontWeight="Bold"
+                    FontSize="13"
+                    Foreground="#EA6A12"
+                    Margin="1 0 0 0"                   
+                    >đ</TextBlock>
+                    <StackPanel
+                    DockPanel.Dock="Right"
+                    Orientation="Horizontal"
+                    >
+                        <Button 
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}" 
+                        Foreground="{x:Null}" Width="30"
+                        Padding="0"
+                        VerticalAlignment="Center"
+                        >
+                            <Image
+                            Source="/QuanLiCoffeeShop;component/Resources/Icon/ChangeBrown_Icon.png"
+                            Width="22"></Image>
+                        </Button>
+                        <Button 
+                        Background="{x:Null}" 
+                        BorderBrush="{x:Null}" 
+                        Foreground="{x:Null}" Width="30"
+                        Padding="0"
+                        VerticalAlignment="Center"
+        >
+                            <Image
+                            Source="/QuanLiCoffeeShop;component/Resources/Icon/DeleteBlue_Icon.png"
+                            Width="22"></Image>
+                        </Button>
+
+                    </StackPanel>
+
+                </DockPanel>
+            </Grid>
+
+        </Border>
+    </Grid>
+</UserControl>

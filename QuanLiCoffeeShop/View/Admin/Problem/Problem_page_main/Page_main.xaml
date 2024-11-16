@@ -1,0 +1,562 @@
+﻿<Page x:Class="QuanLiCoffeeShop.View.Admin.Problem.Problem_page_main.Page_main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:QuanLiCoffeeShop.View.Admin.Problem.Problem_page_main"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      mc:Ignorable="d"
+      Height="800"
+      Width="1536"
+      d:DesignHeight="800"
+      d:DesignWidth="1536"
+      x:Name="ProblemPage"
+      Title="Page_main"
+      DataContext="{StaticResource ProblemPageVM}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding FirstLoadProblem}"
+                                   CommandParameter="{Binding ElementName=ProblemPage}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Background="#FFFFFF"
+          IsHitTestVisible="{Binding IsOpenMain}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="236"></ColumnDefinition>
+            <ColumnDefinition > </ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--grid menu-->
+        <Grid Grid.Column="0"
+              HorizontalAlignment="Center"
+              Width="225">
+            <Border BorderThickness="10">
+                <StackPanel>
+                    <StackPanel.Resources>
+                        <Style TargetType="Button"
+   BasedOn="{StaticResource MaterialDesignFlatAccentBgButton}">
+                            <Style.Setters>
+                                <Setter Property="Foreground"
+            Value="White" />
+                            </Style.Setters>
+                        </Style>
+                        <Style TargetType="materialDesign:PackIcon">
+                            <Style.Setters>
+                                <Setter Property="Foreground"
+            Value="White" />
+                            </Style.Setters>
+                        </Style>
+
+                    </StackPanel.Resources>
+                    <!--Add_problemm-->
+                    <Button Height="70"
+                            Width="202"
+                            Margin="0,30,0,0"
+                            Command="{Binding OpenAdd}">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Border Height="60"
+                                        CornerRadius="24"
+                                        Background="#FFE0AE8A">
+                                    <StackPanel         Cursor="Hand"
+                                                        Orientation="Horizontal">
+                                        <Image    Source="/QuanLiCoffeeShop;component/Resources/Icon/WhiteAdd_Icon.png"
+                                                  Margin="15,0,0,0"
+                                                  Width="20"
+                                                  Height="20" />
+                                        <TextBlock   Text="Báo cáo sự cố"
+                                                     FontSize="19"
+                                                     VerticalAlignment="Center"
+                                                     HorizontalAlignment="Center"
+                                                     Margin="13,0,0,0"
+                                                     Foreground="White" />
+                                    </StackPanel>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <!--search-->
+                    <Border Margin="0,15,0,0"
+                            Height="54"
+                            BorderThickness="1.5"
+                            BorderBrush="#FFE0AE8A"
+                            CornerRadius="16"
+                            Background="#FFF4F4">
+                        <StackPanel         Cursor="Hand"
+                                            Orientation="Horizontal">
+                            <Image    Source="/QuanLiCoffeeShop;component/Resources/Icon/SearchIconCus.png"
+                                      Width="25"
+                                      Height="30"
+                                      Margin="24 0 0 0" />
+                            <TextBox x:Name="SearchPro" 
+                                     BorderBrush="#FFF4F4"
+                                      TextDecorations="None"
+                                      Width="130"                                    
+                                      FontSize="18"
+                                      VerticalAlignment="Center"
+                                      Margin="13,0,0,0"
+                                      Foreground="Black"
+                                     materialDesign:HintAssist.Hint="Tìm Kiếm"
+                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden">
+
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding Search}" CommandParameter="{Binding ElementName=SearchPro}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+
+                            </TextBox>
+                               
+                                      
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Border Height="720"
+                    
+                Margin="10,-60,20,5"
+                    Padding="10"
+                    BorderBrush="#93E6B89F"
+                    BorderThickness="25"
+                     CornerRadius="50">
+                <Grid>
+                    <Border Margin="10,15,20,5"
+                            BorderBrush="Black"
+                            VerticalAlignment="Top"
+                            Height="50"
+                            BorderThickness="0,0,0,1">
+                        <WrapPanel>
+                            <Border Margin="0,0,0,5"
+                                    Width="100"
+                                    Height="30"
+                                    BorderThickness="0,0,1,0"
+                                    BorderBrush="Black">
+                                <TextBlock Text="ID"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"></TextBlock>
+                            </Border>
+                            <Border  Margin="0,0,0,5"
+                                     Width="360"
+                                     Height="30"
+                                     BorderThickness="0,0,1,0"
+                                     BorderBrush="Black">
+                                <TextBlock Text="Tên sự cố"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"></TextBlock>
+                            </Border>
+                            <Border  Margin="0,0,0,5"
+                                     Width="275"
+                                     Height="30"
+                                     BorderThickness="0,0,1,0"
+                                     BorderBrush="Black">
+                                <TextBlock Text="Trạng Thái"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"></TextBlock>
+                            </Border>
+                            <Border Margin="0,0,0,5"
+                                    Width="300"
+                                    Height="30">
+                                <TextBlock Text="Ghi chú"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"></TextBlock>
+                            </Border>
+                        </WrapPanel>
+                    </Border>
+                    <ScrollViewer x:Name="ScrollViewer"
+                                  Height="585"
+                                  Margin="0,69,0,0"
+                                  VerticalScrollBarVisibility="Hidden"
+                                  VerticalAlignment="Top"
+                                  PreviewMouseWheel="ScrollViewer_PreviewMouseWheel"
+                                  HorizontalAlignment="Center"
+                                  Width="1190">
+                        
+                        <ListView x:Name="prb_list"
+                                  VerticalAlignment="Top"
+                                  ItemsSource="{Binding ProblemList}"
+                                  Margin="5,5.5,20,20"
+                                  Width="1180">
+                            <ListView.ItemContainerStyle>
+                                <Style BasedOn="{StaticResource MaterialDesignListBoxItem}"
+                                       TargetType="ListViewItem">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver"
+                                                 Value="True">
+                                            <Setter Property="IsSelected"
+                                                    Value="True" />
+                                            <Setter Property="Background"
+                                                    Value="#FFEAF8FF" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                    <Setter Property="Padding"
+                                            Value="1" />
+                                    <Setter Property="Margin"
+                                            Value="0,0.5,0,0.5" />
+                                    <Setter Property="materialDesign:ListBoxItemAssist.ShowSelection"
+                                            Value="False" />
+                                    
+
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="1" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Border BorderBrush="#7F6F6F6F"
+                                                Width="1170"
+                                                Height="52.2"
+                                                BorderThickness="0,0,0,0.7">
+                                            <WrapPanel VerticalAlignment="Center">
+                                                <Border Margin="0,0,0,0"
+                                                        Width="90"
+                                                        Height="25">
+                                                    <TextBlock Text="{Binding ID}"
+                                                               FontSize="18"
+                                                               HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"></TextBlock>
+                                                </Border>
+                                                <Border  Margin="10,0,0,0"
+                                                         Width="360"
+                                                         Height="25">
+                                                    <TextBlock Text="{Binding DisplayName}"
+                                                               FontSize="18"
+                                                               HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"></TextBlock>
+                                                </Border>
+                                                <Border  Margin="5,0,0,0"
+                                                         Width="275"
+                                                         Height="25">
+                                                    <TextBlock Text="{Binding Status}"
+                                                               FontSize="18"
+                                                               HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"></TextBlock>
+                                                </Border>
+                                                <Border Margin="3,0,0,0"
+                                                        Width="300"
+                                                        Height="25">
+                                                    <TextBlock Text="{Binding Description}"
+                                                               FontSize="18"
+                                                               HorizontalAlignment="Center"
+                                                               VerticalAlignment="Center"></TextBlock>
+                                                </Border>
+
+                                                <Button  Margin="10,0,0,0"
+                                                         Width="35"
+                                                         Height="35"
+                                                         Background="White"
+                                                         Command="{Binding DataContext.OpenEdit, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                                         CommandParameter="{Binding}">
+                                                    <Button.Template>
+                                                        <ControlTemplate>
+                                                            <Border CornerRadius="100"
+                                                                    Background="White"
+                                                                    Height="27"
+                                                                    Width="27">
+                                                                <Image Source="/QuanLiCoffeeShop;component/Resources/Icon/ChangeBrown_Icon.png"></Image>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                                <Button Margin="5,0,0,0"
+                                                        Width="35"
+                                                        Height="35"
+                                                        Background="White"
+                                                        VerticalAlignment="Center"
+                                                        Command="{Binding DataContext.OpenDelete, RelativeSource={RelativeSource AncestorType={x:Type ListView}}}"
+                                                        CommandParameter="{Binding}">
+                                                    <Button.Template>
+                                                        <ControlTemplate>
+                                                            <Border  CornerRadius="100"
+                                                                     Background="White"
+                                                                     Height="27"
+                                                                     Width="27">
+                                                                <Image Source="/QuanLiCoffeeShop;component/Resources/Icon/DeleteBlue_Icon.png"></Image>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Button.Template>
+                                                </Button>
+                                            </WrapPanel>
+                                        </Border>
+
+                                    </Grid>
+
+                                </DataTemplate>
+
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+                  
+                
+            </Border>
+        </Grid>
+        <!--popup thêm sự cố-->
+        <Popup  Placement="Center"
+                x:Name="PopupAdd"
+                IsOpen="{Binding IsPopupOpenAdd}"
+                AllowsTransparency="True"
+                PopupAnimation="Fade">
+            <Border Height="480"
+                    Width="380"
+                    Background="White"
+                    CornerRadius="20"
+                    BorderBrush="#E0AE8A"
+                    BorderThickness="1">
+                <StackPanel>
+
+                    <TextBlock FontSize="29"
+                               Margin="0,16,0,0"
+                               HorizontalAlignment="Center"
+                               Text="Báo cáo sự cố"
+                               Foreground="#CC824D"
+                               FontWeight="Bold"></TextBlock>
+
+                    <TextBlock Text="Tên sự cố"
+                               FontWeight="Bold"
+                               Margin="40,20,0,10"
+                               FontSize="19"></TextBlock>
+
+                    <Border  Height="50"
+                             Width="300"
+                             BorderThickness="1.5"
+                             BorderBrush="#FFE0AE8A"
+                             CornerRadius="16"
+                             Background="#FFF4F4">
+
+                        <TextBox  BorderBrush="Transparent"
+                                  TextDecorations="None"
+                                  Width="260"
+                                  FontSize="19"
+                                  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,0,0"
+                                  Foreground="Black"
+                                  Background="{x:Null}"
+                                  Text="{Binding Name}" />
+
+                    </Border>
+
+                    <TextBlock Text="Trạng thái"
+                               FontWeight="Bold"
+                               Margin="40,20,0,10"
+                               FontSize="19"></TextBlock>
+
+                    <Border  Height="50"
+                             Width="300"
+                             BorderThickness="1.5"
+                             BorderBrush="#FFE0AE8A"
+                             CornerRadius="16"
+                             Background="#FFF4F4">
+                        <ComboBox Width="265"
+                                  Height="35"
+                                  ItemsSource="{Binding StatusList }"
+                                  SelectedItem="{Binding Status}"
+                                  Margin="0,3,0,0"
+                                  Padding="0"
+                                  Background="#FFF4F4"
+                                  HorizontalAlignment="Center"
+                                  VerticalContentAlignment="Center"
+                                  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                  materialDesign:TextFieldAssist.TextFieldCornerRadius="24"
+                                  BorderThickness="0"
+                                  FontFamily="Inter"
+                                  FontSize="19">
+                        </ComboBox>
+
+                    </Border>
+
+                    <TextBlock Text="Ghi chú"
+                               FontWeight="Bold"
+                               Margin="40,20,0,10"
+                               FontSize="19"></TextBlock>
+
+                    <Border  Height="50"
+                             Width="300"
+                             BorderThickness="1.5"
+                             BorderBrush="#FFE0AE8A"
+                             CornerRadius="16"
+                             Background="#FFF4F4">
+
+                        <TextBox  BorderBrush="#FFF4F4"
+                                  TextDecorations="None"
+                                  Width="260"
+                                  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                  FontSize="18"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,0,0"
+                                  Foreground="Black"
+                                  Background="{x:Null}"
+                                  Text="{Binding Description}" />
+
+                    </Border>
+                    <Grid Margin="0,30,0,0">
+                        <Button Height="48"
+                                Width="97"
+                                HorizontalAlignment="Left"
+                                Margin="45,0,0,0"
+                                Command="{Binding AddProblem}">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Border      CornerRadius="24"
+                                                 Background="#F0BD70">
+                                        <TextBlock   Text="Báo cáo"
+                                                     FontWeight="Bold"
+                                                     FontSize="20"
+                                                     VerticalAlignment="Center"
+                                                     HorizontalAlignment="Center"
+                                                     Foreground="White" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Height="48"
+                                Width="97"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,45,0"
+                                Command="{Binding CloseAdd}">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Border      CornerRadius="24"
+                                                 Background="#FFC3BDB9">
+                                        <TextBlock   Text="Đóng"
+                                                     FontWeight="Bold"
+                                                     FontSize="20"
+                                                     VerticalAlignment="Center"
+                                                     HorizontalAlignment="Center"
+                                                     Foreground="White" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Popup>
+        <!--popp sủa sự cố-->
+        <Popup  Placement="Center"
+                x:Name="Popup_sua_su_co"
+                IsOpen="{Binding IsPopupOpenEdit}"
+                AllowsTransparency="True"
+                PopupAnimation="Fade">
+            <Border Height="355"
+                    Width="347"
+                    Background="White"
+                    CornerRadius="20"
+                    BorderBrush="#E0AE8A"
+                    BorderThickness="1">
+                <StackPanel>
+                    <TextBlock FontSize="29"
+                               Margin="0,16,0,0"
+                               HorizontalAlignment="Center"
+                               Text="Sửa sự cố"
+                               Foreground="#CC824D"
+                               FontWeight="Bold"></TextBlock>
+                    <TextBlock Text="Trạng thái"
+                               FontWeight="Bold"
+                               Margin="35,20,0,10"
+                               FontSize="19"></TextBlock>
+                    <Border  Height="50"
+                             Width="287"
+                             BorderThickness="1.5"
+                             BorderBrush="#FFE0AE8A"
+                             CornerRadius="16"
+                             Background="#FFF4F4">
+                        <ComboBox Width="260"
+                                  Height="35"
+                                  ItemsSource="{Binding StatusList }"
+                                  SelectedItem="{Binding Status}"
+                                  Margin="0,3,0,0"
+                                  Padding="0"
+                                  Background="#FFF4F4"
+                                  HorizontalAlignment="Center"
+                                  VerticalContentAlignment="Center"
+                                  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                  BorderThickness="0"
+                                  FontFamily="Inter"
+                                  FontSize="19">
+                        </ComboBox>
+                    </Border>
+                    <TextBlock Text="Ghi chú"
+                               FontWeight="Bold"
+                               Margin="35,20,0,10"
+                               FontSize="19"></TextBlock>
+                    <Border  Height="50"
+                             Width="287"
+                             BorderThickness="1.5"
+                             BorderBrush="#FFE0AE8A"
+                             CornerRadius="16"
+                             Background="#FFF4F4">
+                        <TextBox  BorderBrush="#FFF4F4"
+                                  TextDecorations="None"
+                                  materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                  materialDesign:TextFieldAssist.TextFieldCornerRadius="24"
+                                  Width="260"
+                                  FontSize="19"
+                                  VerticalAlignment="Center"
+                                  Margin="5,0,10,0"
+                                  Foreground="Black"
+                                  Background="{x:Null}"
+                                  Text="{Binding Description}" />
+                    </Border>
+
+                    <!--btn_sua-->
+                    <Grid Margin="0,20,0,0">
+                        <Button Height="48"
+                                Width="97"
+                                HorizontalAlignment="Left"
+                                Margin="35,0,0,0"
+                                Command="{Binding Edit}">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Border      CornerRadius="24"
+                                                 Background="#F0BD70">
+                                        <TextBlock   Text="Sửa"
+                                                     FontWeight="Bold"
+                                                     FontSize="20"
+                                                     VerticalAlignment="Center"
+                                                     HorizontalAlignment="Center"
+                                                     Foreground="White" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <!--btn_close-->
+                        <Button Height="48"
+                                Width="97"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,35,0"
+                                Command="{Binding CloseEdit}">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Border      CornerRadius="24"
+                                                 Background="#FFC3BDB9">
+                                        <TextBlock   Text="Đóng"
+                                                     FontWeight="Bold"
+                                                     FontSize="20"
+                                                     VerticalAlignment="Center"
+                                                     HorizontalAlignment="Center"
+                                                     Foreground="White" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+        </Popup>
+      
+
+
+    </Grid>
+</Page>
